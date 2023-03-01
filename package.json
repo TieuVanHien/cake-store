@@ -26,7 +26,11 @@
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.7.1",
     "sanity": "^3.5.0",
+    "sass": "^1.58.3",
     "stripe": "^11.12.0",
     "typescript": "4.9.5"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.18.6"
   }
 }
