@@ -2,10 +2,11 @@ import React from "react";
 import { Product, FooterBanner, HeroBanner } from "../components";
 import { client } from "./../lib/client";
 
-const Home = () => {
+const Home = ({ products, bannerData }) => {
   return (
     <div>
-      <HeroBanner />
+      <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
+
       <div>
         <h2 className="products-heading">
           Best selling products
@@ -13,11 +14,28 @@ const Home = () => {
         </h2>
       </div>
       <div className="products-container">
-        {["Product 1", "Product 2", "Product 3"].map((product) => product)}
+        {products.map((product) => (
+          <Product key={product._id} product={product} />
+        ))}
       </div>
-      <FooterBanner />
+      <FooterBanner footerBanner={bannerData && bannerData[0]} />
     </div>
   );
+};
+
+export const getServerSideProps = async () => {
+  const query = '*[_type == "product"]';
+  const products = await client.fetch(query, { dataset: "production" });
+
+  const bannerQuery = '*[_type == "banner"]';
+  const bannerData = await client.fetch(bannerQuery, { dataset: "production" });
+
+  return {
+    props: {
+      products,
+      bannerData,
+    },
+  };
 };
 
 export default Home;

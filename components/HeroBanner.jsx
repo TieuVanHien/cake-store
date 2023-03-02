@@ -1,21 +1,26 @@
 import React from "react";
 import Link from "next/link";
+import { urlFor } from "../lib/client";
 
-export const HeroBanner = () => {
+export const HeroBanner = ({ heroBanner }) => {
   return (
     <div className="hero-banner-container">
       <div>
-        <p className="">Small Text</p>
-        <h3>Mid Text</h3>
-        <img src="" alt="cake" className="hero-banner-image" />
+        <p className="">{heroBanner.smallText}</p>
+        <h3>{heroBanner.midText}</h3>
+        <img
+          src={urlFor(heroBanner.image)}
+          alt="cake"
+          className="hero-banner-image"
+        />
         <div>
-          <Link href="/product/id">
-            <button className="">Button</button>
+          <Link href={`/prodcut/${heroBanner.product}`}>
+            <button className="">{heroBanner.buttonText}</button>
           </Link>
         </div>
         <div className="desc">
           <h5>Description</h5>
-          <p>description</p>
+          <p>{heroBanner.desc}</p>
         </div>
       </div>
     </div>
