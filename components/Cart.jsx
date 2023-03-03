@@ -45,9 +45,10 @@ export const Cart = () => {
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
               <div className="product" key={item._id}>
-                <img
+                <image
                   src={urlFor(item?.image[0])}
                   className="cart-product-image"
+                  alt="test"
                 />
                 <div>
                   <h5>{item.name}</h5>
