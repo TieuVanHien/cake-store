@@ -57,7 +57,7 @@ export const ProductDetails = ({ product, products }) => {
               <AiOutlineMinus />
             </span>
             <span className="num">{quantity}</span>
-            <span className="minus" onClick={plusQty}>
+            <span className="plus" onClick={plusQty}>
               <AiOutlinePlus />
             </span>
           </p>

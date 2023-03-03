@@ -8,12 +8,13 @@ export const StateContext = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQty, setTotalQty] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  let foundProduct;
+  let index;
 
   const onAdd = (product, qty) => {
     const checkProductInCart = cartItems.find(
       (item) => item._id === product._id
     );
-
     setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * qty);
     setTotalQty((prevTotalQty) => prevTotalQty + qty);
 
@@ -36,6 +37,40 @@ export const StateContext = ({ children }) => {
     alert(`${qty} ${product.name} added to the cart.`);
   };
 
+  const onRemove = (product) => {
+    foundProduct = cartItems.find((item) => item._id === product._id);
+    const newCartItems = cartItems.filter((item) => item._id !== product._id);
+
+    setTotalPrice(
+      (prevTotalPrice) => prevTotalPrice - foundProduct.price * product.quantity
+    );
+    setTotalQty((prevTotalQty) => prevTotalQty - foundProduct.price * product);
+    setCartItems(newCartItems);
+  };
+
+  const toggleCartItemQuantity = (id, value) => {
+    foundProduct = cartItems.find((item) => item._id === id);
+    const newCartItem = cartItems.filter((item) => item._id !== id);
+
+    if (value === "inc") {
+      setCartItems([
+        ...newCartItem,
+        { ...foundProduct, quantity: foundProduct.quantity + 1 },
+      ]);
+      setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
+      setTotalQty((prevTotalQuantities) => prevTotalQuantities + 1);
+    } else if (value === "dec") {
+      if (foundProduct.quantity > 1) {
+        setCartItems([
+          ...newCartItem,
+          { ...foundProduct, quantity: foundProduct.quantity - 1 },
+        ]);
+        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price);
+        setTotalQty((prevTotalQuantities) => prevTotalQuantities - 1);
+      }
+    }
+  };
+
   const plusQty = () => {
     setQuantity((prevQty) => prevQty + 1);
   };
@@ -54,7 +89,9 @@ export const StateContext = ({ children }) => {
         totalPrice,
         totalQty,
         quantity,
+        toggleCartItemQuantity,
         setShowCart,
+        onRemove,
         plusQty,
         minusQty,
         onAdd,
