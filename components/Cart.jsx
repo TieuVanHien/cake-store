@@ -22,29 +22,43 @@ export const Cart = () => {
     toggleCartItemQuantity,
   } = useStateContext();
 
-  const handleCheckout = async () => {
+  const handleCheckOut = async (event) => {
     const stripe = await getStripe();
-
-    const response = await fetch("/api/stripe", {
+    const stripeSession = await fetch("/api/stripe", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ cartItems: cartItems || [] }),
+      body: JSON.stringify(cartItems),
     });
-
-    console.log(response);
-
-    // Extract the session ID from the response
-    const session = await response.json();
-    const sessionId = session.id;
-
-    // Redirect to the Stripe checkout page with the session ID
-    const result = await stripe.redirectToCheckout({ sessionId });
-    if (result.error) {
-      console.log(result.error.message);
-    }
+    const sessionData = await stripeSession.json();
+    const sessionId = sessionData.id;
+    stripe.redirectToCheckout({ sessionId });
   };
+
+  // const handleCheckout = async () => {
+  //   const stripe = await getStripe();
+
+  //   const response = await fetch("/api/stripe", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ cartItems: cartItems || [] }),
+  //   });
+
+  //   console.log(response);
+
+  //   // Extract the session ID from the response
+  //   const session = await response.json();
+  //   const sessionId = session.id;
+
+  //   // Redirect to the Stripe checkout page with the session ID
+  //   const result = await stripe.redirectToCheckout({ sessionId });
+  //   if (result.error) {
+  //     console.log(result.error.message);
+  //   }
+  // };
 
   return (
     <div className="cart-wrapper" ref={cartRef}>
@@ -70,7 +84,7 @@ export const Cart = () => {
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
               <div className="product" key={item._id}>
-                <image
+                <img
                   src={urlFor(item?.image[0])}
                   className="cart-product-image"
                   alt="test"
@@ -114,7 +128,7 @@ export const Cart = () => {
               <h3>${totalPrice}</h3>
             </div>
             <div>
-              <button className="btn" onClick={handleCheckout}>
+              <button className="btn" onClick={handleCheckOut}>
                 Check Out
               </button>
             </div>

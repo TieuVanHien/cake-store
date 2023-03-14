@@ -9,8 +9,8 @@ export default async function handler(req, res) {
         submit_type: "pay",
         mode: "payment",
         payment_method_types: ["card"],
-        billing_address: "auto",
-        shipping_option: [
+        billing_address_collection: "auto",
+        shipping_options: [
           { shipping_rate: "shr_1MlOL8Imn1sYUhaiqwd6uCl0" },
           { shipping_rate: "shr_1MlOMJImn1sYUhai7QJi8NHg" },
         ],
@@ -25,12 +25,12 @@ export default async function handler(req, res) {
 
           return {
             price_data: {
-              currency: "can",
+              currency: "cad",
               product_data: {
                 name: item.name,
                 images: [newImage],
               },
-              unit_amount: item.price * 10,
+              unit_amount: item.price * 100,
             },
             adjustable_quantity: {
               enabled: true,
