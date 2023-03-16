@@ -71,9 +71,6 @@ export const ProductDetails = ({ product, products }) => {
           >
             Add To Cart
           </button>
-          <button type="button" className="buy-now">
-            Buy Now
-          </button>
         </div>
       </div>
       <div className="maylike-products-wrapper ">
