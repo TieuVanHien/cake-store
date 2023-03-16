@@ -20,7 +20,7 @@ export const ProductDetails = ({ product, products }) => {
           <div className="image-container">
             <img
               className="product-detail-image"
-              src={urlFor(product.image && product.image[index])}
+              src={urlFor(product.image[index])}
             />
           </div>
         </div>
