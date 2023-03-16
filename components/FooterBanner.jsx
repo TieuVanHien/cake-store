@@ -15,9 +15,6 @@ export const FooterBanner = ({ footerBanner }) => {
           <p>{footerBanner.smallText}</p>
           <h3>{footerBanner.midText}</h3>
           <p>{footerBanner.desc}</p>
-          <Link href={`/product/${footerBanner.product}`}>
-            <button type="button">{footerBanner.buttonText}</button>
-          </Link>
         </div>
         <img src={urlFor(footerBanner.image)} className="footer-banner-image" />
       </div>
