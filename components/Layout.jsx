@@ -1,8 +1,6 @@
 import React from "react";
 import Head from "next/head";
 import { Nav } from "./Nav";
-import { Footer } from "./Footer";
-
 export const Layout = ({ children }) => {
   return (
     <div className="layout">
@@ -13,9 +11,6 @@ export const Layout = ({ children }) => {
         <Nav />
       </header>
       <main className="main-container">{children}</main>
-      <footer>
-        <Footer />
-      </footer>
     </div>
   );
 };
