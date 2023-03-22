@@ -1,18 +1,32 @@
 import React from "react";
-import { Product, HeroBanner } from "../components";
+import { Product } from "../components";
 import { client } from "./../lib/client";
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
 
-const Home = ({ products, bannerData }) => {
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
+const Home = ({ products, mayLikeProducts }) => {
   return (
-    <div>
-      {/* <HeroBanner heroBanner={bannerData.length && bannerData[0]} /> */}
-      <div>
-        <h2 className="products-heading">Best selling products</h2>
-      </div>
-      <div className="products-container">
-        {products.map((product) => (
-          <Product key={product._id} product={product} />
-        ))}
+    <div className="main">
+      <div className="container">
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={1}
+          navigation={false}
+          pagination={{ clickable: true }}
+        >
+          {products.map((product) => (
+            <SwiperSlide key={product._id}>
+              <Product
+                key={product._id}
+                product={product}
+                mayLikeProducts={mayLikeProducts}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );

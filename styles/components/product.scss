@@ -1,0 +1,17 @@
+.product {
+  height: 100%;
+  .container {
+    .card {
+      height: 100%;
+      display: flex;
+      width: 50%;
+      flex-direction: column;
+      justify-content: center;
+      img {
+        border-radius: 50%;
+        width: 25em;
+        height: 25em;
+      }
+    }
+  }
+}

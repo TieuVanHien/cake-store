@@ -1,0 +1,14 @@
+.navbar-container {
+  width: 100%;
+  padding: 1em;
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h4 {
+    margin-left: 2em;
+  }
+  .cart {
+    margin-right: 2em;
+  }
+}

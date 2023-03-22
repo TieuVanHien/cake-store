@@ -1,21 +1,23 @@
 import React from "react";
 import Link from "next/link";
-import { AiOutlineShopping } from "react-icons/ai";
+import { Button } from "@mui/material";
 import { Cart } from "./Cart";
 import { useStateContext } from "../context/StateContext";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
 
 export const Nav = () => {
   const { showCart, setShowCart, totalQty } = useStateContext();
 
   return (
     <div className="navbar-container">
-      <p className="logo">
+      <h4 className="logo">
         <Link href="/">Thuy Trang Cake</Link>
-      </p>
-      <button className="cart-icon" onClick={() => setShowCart(true)}>
-        <AiOutlineShopping />
+      </h4>
+      <Button className="cart" onClick={() => setShowCart(true)}>
+        <LocalMallIcon />
         <span className="cart-item-qty"> {totalQty}</span>
-      </button>
+      </Button>
+
       {showCart && <Cart />}
     </div>
   );

@@ -3,7 +3,7 @@ import { Layout } from "./../components";
 import { StateContext } from "../context/StateContext";
 import { Toaster } from "react-hot-toast";
 
-require("@/styles/globals.css");
+require("./../styles/main.scss");
 const { AppProps } = require("next/app");
 
 function App({ Component, pageProps }) {

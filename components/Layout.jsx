@@ -4,14 +4,12 @@ import { Nav } from "./Nav";
 
 export const Layout = ({ children }) => {
   return (
-    <div className="layout">
+    <section className="layout">
       <Head>
         <title>Thuy Trang Store</title>
       </Head>
-      <header>
-        <Nav />
-      </header>
-      <main className="main-container">{children}</main>
-    </div>
+      <Nav />
+      <main className="container">{children}</main>
+    </section>
   );
 };
