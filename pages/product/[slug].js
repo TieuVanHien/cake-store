@@ -47,8 +47,7 @@ export const ProductDetails = ({ product, products }) => {
           </div>
         </div>
         <div>
-          <h4>Details:</h4>
-          <p>{product.details}</p>
+         
           <p className="price">${product.price}</p>
         </div>
         <div className="quantity">
