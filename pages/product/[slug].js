@@ -32,6 +32,7 @@ export const ProductDetails = ({ product, products }) => {
               className={
                 i === index ? "small-image selected-image" : "small-image"
               }
+              alt=""
               src={urlFor(item)}
               key={i}
               onMouseEnter={() => setIndex(i)}
