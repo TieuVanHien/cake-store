@@ -14,7 +14,7 @@ export const Nav = () => {
         <Link href="/">Thuy Trang Cake</Link>
       </h4>
       <Button className="cart" onClick={() => setShowCart(true)}>
-        <LocalMallIcon />
+        <LocalMallIcon style={{ color: "black" }} />
         <span className="cart-item-qty"> {totalQty}</span>
       </Button>
 

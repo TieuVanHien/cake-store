@@ -1,3 +1,4 @@
 import product from './product'
+import popular from './mostSold'
 
-export const schemaTypes = [product]
+export const schemaTypes = [product, popular]
