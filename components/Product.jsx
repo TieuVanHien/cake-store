@@ -6,6 +6,7 @@ import {
   AiOutlineStar,
   AiFillStar,
 } from "react-icons/ai";
+import Image from "next/image";
 import { BsArrowRightCircle } from "react-icons/bs";
 import { Button } from "@mui/material";
 import { urlFor } from "../lib/client";
@@ -68,7 +69,7 @@ export const Product = ({ product }) => {
 
         <div className="card right">
           <Link href={`/product/${product.slug.current}`}>
-            <img
+            <Image
               src={urlFor(product.image && product.image[0])}
               width={250}
               height={250}

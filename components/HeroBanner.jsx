@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { urlFor } from "../lib/client";
+import Image from "next/image";
 
 export const HeroBanner = ({ heroBanner }) => {
   return (
@@ -8,7 +9,7 @@ export const HeroBanner = ({ heroBanner }) => {
       <div>
         <p className="">{heroBanner.smallText}</p>
         <h3>{heroBanner.midText}</h3>
-        <img
+        <Image
           src={urlFor(heroBanner.image)}
           alt="cake"
           className="hero-banner-image"
