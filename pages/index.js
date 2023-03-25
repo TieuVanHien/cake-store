@@ -1,17 +1,16 @@
 import React from "react";
 import { Product } from "../components";
 import { client } from "./../lib/client";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
-
-const Home = ({ products, mayLikeProducts }) => {
+const Home = ({ products }) => {
   return (
     <div className="main">
       <div className="container">
         <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={50}
           slidesPerView={1}
           navigation={false}
@@ -19,11 +18,7 @@ const Home = ({ products, mayLikeProducts }) => {
         >
           {products.map((product) => (
             <SwiperSlide key={product._id}>
-              <Product
-                key={product._id}
-                product={product}
-                mayLikeProducts={mayLikeProducts}
-              />
+              <Product product={product} />
             </SwiperSlide>
           ))}
         </Swiper>
