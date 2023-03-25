@@ -1,6 +1,6 @@
 import React from "react";
 import { Product } from "../components";
-import { client } from "./../lib/client";
+import { client } from "../lib/client";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";

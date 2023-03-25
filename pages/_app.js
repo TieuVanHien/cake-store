@@ -1,10 +1,9 @@
 import React from "react";
-import { Layout } from "./../components";
+import { Layout } from "../components";
 import { StateContext } from "../context/StateContext";
 import { Toaster } from "react-hot-toast";
 
-require("./../styles/main.scss");
-const { AppProps } = require("next/app");
+import "../styles/main.scss";
 
 function App({ Component, pageProps }) {
   return (

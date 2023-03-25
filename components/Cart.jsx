@@ -24,18 +24,19 @@ export const Cart = () => {
   } = useStateContext();
 
   const handleCheckOut = async (event) => {
-    const stripe = await getStripe();
-    const stripeSession = await fetch("/api/stripe", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(cartItems),
-    });
-    const sessionData = await stripeSession.json();
-    const sessionId = sessionData.id;
-    stripe.redirectToCheckout({ sessionId });
+    // const stripe = await getStripe();
+    // const stripeSession = await fetch("/api/stripe", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(cartItems),
+    // });
+    // const sessionData = await stripeSession.json();
+    // const sessionId = sessionData.id;
+    // stripe.redirectToCheckout({ sessionId });
   };
+
   return (
     <div className="cart-wrapper" ref={cartRef}>
       <div className="cart-container">
