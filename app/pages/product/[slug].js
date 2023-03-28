@@ -20,7 +20,7 @@ export const ProductDetails = ({ product, products }) => {
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <Image
+            <img
               className="product-detail-image"
               src={urlFor(product.image[index])}
             />
@@ -28,7 +28,7 @@ export const ProductDetails = ({ product, products }) => {
         </div>
         <div className="small-images-container">
           {product.image?.map((item, i) => (
-            <Image
+            <img
               className={
                 i === index ? "small-image selected-image" : "small-image"
               }

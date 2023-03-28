@@ -17,7 +17,7 @@ export const Product = ({ product }) => {
   const { minusQty, plusQty, quantity, onAdd } = useStateContext();
 
   return (
-    <section className="product">
+    <section className="product z-1">
       <div className="container">
         <div className="card left">
           <div className="product-detail">
@@ -70,7 +70,7 @@ export const Product = ({ product }) => {
 
         <div className="card right">
           <Link href={`/product/${product.slug.current}`}>
-            <Image
+            <img
               src={urlFor(product.image && product.image[0])}
               width={250}
               height={250}

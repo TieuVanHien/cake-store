@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 0.5px solid #d1d1d8;
-  h4 {
+  .logo {
     margin-left: 2em;
     font-size: 2rem;
     background: linear-gradient(to right, #fc4a1a, #f7b733);
@@ -14,7 +14,6 @@
     -webkit-text-fill-color: transparent;
     opacity: 0.8;
   }
-
   .cart {
     margin-right: 2em;
   }

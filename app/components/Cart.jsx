@@ -10,7 +10,7 @@ import { TiDeleteOutline } from "react-icons/ti";
 import { urlFor } from "../lib/client";
 import { useStateContext } from "../context/StateContext";
 import getStripe from "./../lib/getStripe";
-import Image from "next/image";
+import { Button } from "@mui/material";
 
 export const Cart = () => {
   const cartRef = useRef();
@@ -38,21 +38,20 @@ export const Cart = () => {
   };
 
   return (
-    <div className="cart-wrapper" ref={cartRef}>
+    <div className="cart" ref={cartRef}>
       <div className="cart-container">
-        <button className="cart-heading" onClick={() => setShowCart(false)}>
+        <Button className="cart-heading" onClick={() => setShowCart(false)}>
           <AiOutlineLeft />
           <span className="heading">Your Cart</span>
           <span className="cart-num-items">({totalQty} items)</span>
-        </button>
+        </Button>
         {cartItems.length < 1 && (
           <div className="empty-cart">
-            <AiOutlineShopping />
-            <h3>Your shopping cart is empty</h3>
+            <h4 className="your-cart">Your shopping cart is empty</h4>
             <Link href="/">
-              <button onClick={() => setShowCart(false)} className="btn">
+              <Button onClick={() => setShowCart(false)} className="button">
                 Continue Shopping
-              </button>
+              </Button>
             </Link>
           </div>
         )}
@@ -61,7 +60,7 @@ export const Cart = () => {
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
               <div className="product" key={item._id}>
-                <Image
+                <img
                   src={urlFor(item?.image[0])}
                   className="cart-product-image"
                   alt="test"
@@ -88,12 +87,12 @@ export const Cart = () => {
                       </span>
                     </p>
                   </div>
-                  <button
+                  <Button
                     className="remove-item"
                     onClick={() => onRemove(item)}
                   >
                     <TiDeleteOutline />
-                  </button>
+                  </Button>
                 </div>
               </div>
             ))}
@@ -105,9 +104,9 @@ export const Cart = () => {
               <h3>${totalPrice}</h3>
             </div>
             <div>
-              <button className="bg-5adbb5" onClick={handleCheckOut}>
+              <Button className="checkout-button" onClick={handleCheckOut}>
                 Check Out
-              </button>
+              </Button>
             </div>
           </div>
         )}

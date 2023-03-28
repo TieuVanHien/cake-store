@@ -9,7 +9,7 @@ export const HeroBanner = ({ heroBanner }) => {
       <div>
         <p className="">{heroBanner.smallText}</p>
         <h3>{heroBanner.midText}</h3>
-        <Image
+        <img
           src={urlFor(heroBanner.image)}
           alt="cake"
           className="hero-banner-image"
