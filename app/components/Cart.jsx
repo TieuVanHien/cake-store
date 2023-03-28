@@ -1,11 +1,6 @@
 import React, { useRef } from "react";
 import Link from "next/link";
-import {
-  AiOutlineMinus,
-  AiOutlinePlus,
-  AiOutlineShopping,
-  AiOutlineLeft,
-} from "react-icons/ai";
+import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import { urlFor } from "../lib/client";
 import { useStateContext } from "../context/StateContext";
@@ -62,7 +57,7 @@ export const Cart = () => {
               <div className="product" key={item._id}>
                 <img
                   src={urlFor(item?.image[0])}
-                  className="cart-product-image"
+                  className="rounded-lg"
                   alt="test"
                 />
                 <div>
@@ -99,9 +94,9 @@ export const Cart = () => {
         </div>
         {cartItems.length >= 1 && (
           <div className="cart-bottom">
-            <div className="total">
-              <h3>Subtotal:</h3>
-              <h3>${totalPrice}</h3>
+            <div className="flex justify-center">
+              <h4 className="">Subtotal:</h4>
+              <h4 className="mr-0">${totalPrice}</h4>
             </div>
             <div>
               <Button className="checkout-button" onClick={handleCheckOut}>

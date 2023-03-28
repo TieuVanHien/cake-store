@@ -47,7 +47,7 @@ export const Product = ({ product }) => {
           <div className="buttons">
             <Button
               variant="contained"
-              className="add-to-cart bg-5adbb5"
+              className="add-to-cart"
               onClick={() => onAdd(product, quantity)}
             >
               Add To Cart
@@ -56,11 +56,11 @@ export const Product = ({ product }) => {
 
           <p>Free 3-5 day shipping • Express Shipping</p>
           <div className="social-media">
-            <Button className="icon">
-              <Facebook style={{ color: "black" }} />
+            <Button className="icon" style={{ color: "black" }}>
+              <Facebook />
             </Button>
-            <Button className="icon">
-              <Instagram style={{ color: "black" }} />
+            <Button className="icon" style={{ color: "black" }}>
+              <Instagram />
             </Button>
             <Button className="icon">
               <Twitter style={{ color: "black" }} />
