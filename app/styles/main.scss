@@ -1,3 +1,7 @@
-@use "./typography.scss" as *;
+@use "./typography" as *;
 @use "./container" as *;
 @use "./components" as *;
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";

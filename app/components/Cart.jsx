@@ -24,17 +24,17 @@ export const Cart = () => {
   } = useStateContext();
 
   const handleCheckOut = async (event) => {
-    // const stripe = await getStripe();
-    // const stripeSession = await fetch("/api/stripe", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(cartItems),
-    // });
-    // const sessionData = await stripeSession.json();
-    // const sessionId = sessionData.id;
-    // stripe.redirectToCheckout({ sessionId });
+    const stripe = await getStripe();
+    const stripeSession = await fetch("/api/stripe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartItems),
+    });
+    const sessionData = await stripeSession.json();
+    const sessionId = sessionData.id;
+    stripe.redirectToCheckout({ sessionId });
   };
 
   return (
@@ -105,7 +105,7 @@ export const Cart = () => {
               <h3>${totalPrice}</h3>
             </div>
             <div>
-              <button className="btn" onClick={handleCheckOut}>
+              <button className="bg-5adbb5" onClick={handleCheckOut}>
                 Check Out
               </button>
             </div>

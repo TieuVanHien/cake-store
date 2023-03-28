@@ -47,12 +47,13 @@ export const Product = ({ product }) => {
           <div className="buttons">
             <Button
               variant="contained"
-              className="add-to-cart"
+              className="add-to-cart bg-5adbb5"
               onClick={() => onAdd(product, quantity)}
             >
               Add To Cart
             </Button>
           </div>
+
           <p>Free 3-5 day shipping • Express Shipping</p>
           <div className="social-media">
             <Button className="icon">
