@@ -9,7 +9,6 @@ export const StateContext = ({ children }) => {
   const [totalQty, setTotalQty] = useState(0);
   const [quantity, setQuantity] = useState(1);
   let foundProduct;
-  let index;
 
   const onAdd = (product, qty) => {
     const checkProductInCart = cartItems.find(
