@@ -18,12 +18,13 @@ export const Cart = () => {
     toggleCartItemQuantity,
   } = useStateContext();
 
-  const handleCheckOut = async (event) => {
+  const handleCheckOut = async () => {
     const stripe = await getStripe();
     const stripeSession = await fetch("/api/stripe", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.STRIPE_API_SECRET_KEY}`,
       },
       body: JSON.stringify(cartItems),
     });
@@ -82,27 +83,25 @@ export const Cart = () => {
                       </span>
                     </p>
                   </div>
-                  <Button
-                    className="remove-item"
+
+                  <TiDeleteOutline
+                    className="remove-item "
                     onClick={() => onRemove(item)}
-                  >
-                    <TiDeleteOutline />
-                  </Button>
+                    size={25}
+                  />
                 </div>
               </div>
             ))}
         </div>
         {cartItems.length >= 1 && (
           <div className="cart-bottom">
-            <div className="flex justify-center">
+            <div className="checkout">
               <h4 className="">Subtotal:</h4>
-              <h4 className="mr-0">${totalPrice}</h4>
+              <h4 className="price">${totalPrice}</h4>
             </div>
-            <div>
-              <Button className="checkout-button" onClick={handleCheckOut}>
-                Check Out
-              </Button>
-            </div>
+            <Button className="button" onClick={handleCheckOut}>
+              Check Out
+            </Button>
           </div>
         )}
       </div>

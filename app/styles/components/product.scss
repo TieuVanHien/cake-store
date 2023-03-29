@@ -37,11 +37,6 @@
       }
       &.left {
         margin-left: 3em;
-        .add-to-cart {
-          &:hover {
-            color: red;
-          }
-        }
         .icon {
           cursor: pointer;
           transition: transform 0.2s ease-in-out;

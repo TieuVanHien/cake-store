@@ -1,3 +1,7 @@
 .button {
-  background-color: #5adbb5;
+  color: white;
+  background-color: red;
+  &:hover {
+    background-color: red;
+  }
 }

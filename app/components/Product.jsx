@@ -6,7 +6,6 @@ import {
   AiOutlineStar,
   AiFillStar,
 } from "react-icons/ai";
-import Image from "next/image";
 import { BsArrowRightCircle } from "react-icons/bs";
 import { Button } from "@mui/material";
 import { urlFor } from "../lib/client";
@@ -17,7 +16,7 @@ export const Product = ({ product }) => {
   const { minusQty, plusQty, quantity, onAdd } = useStateContext();
 
   return (
-    <section className="product z-1">
+    <section className="product">
       <div className="container">
         <div className="card left">
           <div className="product-detail">
@@ -47,7 +46,7 @@ export const Product = ({ product }) => {
           <div className="buttons">
             <Button
               variant="contained"
-              className="add-to-cart"
+              className="button"
               onClick={() => onAdd(product, quantity)}
             >
               Add To Cart
@@ -67,7 +66,6 @@ export const Product = ({ product }) => {
             </Button>
           </div>
         </div>
-
         <div className="card right">
           <Link href={`/product/${product.slug.current}`}>
             <img

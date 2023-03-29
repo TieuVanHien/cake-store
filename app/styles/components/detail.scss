@@ -1,0 +1,93 @@
+.product-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 90%;
+  height: 100%;
+  padding-top: 3em;
+  .product {
+    width: 100%;
+    height: 55%;
+    display: flex;
+    justify-content: space-between;
+    .image-container {
+      width: 70%;
+      height: 75%;
+      display: flex;
+      .main-product {
+        width: 40%;
+        height: 100%;
+      }
+      .small-images-container {
+        margin-left: 1em;
+        .image {
+          display: flex;
+          gap: 2em;
+        }
+        .small-image {
+          border-radius: 8px;
+          background-color: #ebebeb;
+          width: 7em;
+          height: 7em;
+          cursor: pointer;
+        }
+      }
+    }
+    .product-detail-desc {
+      width: 30%;
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      align-items: flex-start;
+      .checkout {
+        width: 100%;
+        .button {
+          width: 60%;
+        }
+      }
+    }
+  }
+  .maylike-products {
+    display: flex;
+    height: 100%;
+    justify-content: flex-start;
+    flex-direction: column;
+    .marquee {
+      position: relative;
+      height: 90%;
+      width: 70%;
+      display: flex;
+      justify-content: flex-end;
+      overflow: hidden;
+      .maylike-products-container {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+        img {
+          width: 10em;
+          height: 10em;
+        }
+      }
+      .track {
+        position: absolute;
+        animation: marquee 15s linear infinite;
+        width: 50%;
+      }
+      .track:hover {
+        animation-play-state: paused;
+      }
+      @keyframes marquee {
+        0% {
+          transform: translateX(0%);
+        }
+        50% {
+          transform: translateX(-70%);
+        }
+        100% {
+          transform: translateX(0%);
+        }
+      }
+    }
+  }
+}

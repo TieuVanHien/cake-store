@@ -6,9 +6,8 @@ import {
   AiOutlineStar,
   AiFillStar,
 } from "react-icons/ai";
-import Image from "next/image";
-
-import { Product } from "../../components";
+import { Button } from "@mui/material";
+import { ProductImage } from "../../components";
 import { useStateContext } from "../../context/StateContext";
 
 export const ProductDetails = ({ product, products }) => {
@@ -16,31 +15,32 @@ export const ProductDetails = ({ product, products }) => {
   const { minusQty, plusQty, quantity, onAdd } = useStateContext();
 
   return (
-    <div>
-      <div className="product-detail-container">
-        <div>
-          <div className="image-container">
-            <img
-              className="product-detail-image"
-              src={urlFor(product.image[index])}
-            />
+    <div className="product-container">
+      <div className="product">
+        <div className="image-container">
+          <img className="main-product" src={urlFor(product.image[index])} />
+          <div className="small-images-container">
+            <div className="image">
+              {product.image?.map((item, i) => (
+                <img
+                  className={
+                    i === index ? "small-image selected-image" : "small-image"
+                  }
+                  alt=""
+                  src={urlFor(item)}
+                  key={i}
+                  onMouseEnter={() => setIndex(i)}
+                />
+              ))}
+            </div>
+            <p style={{ width: "70%", marginTop: "5em" }}>
+              <b>Description</b>: {product.details}
+            </p>
           </div>
         </div>
-        <div className="small-images-container">
-          {product.image?.map((item, i) => (
-            <img
-              className={
-                i === index ? "small-image selected-image" : "small-image"
-              }
-              alt=""
-              src={urlFor(item)}
-              key={i}
-              onMouseEnter={() => setIndex(i)}
-            />
-          ))}
-        </div>
         <div className="product-detail-desc">
-          <h1>{product.name}</h1>
+          <h2>{product.name}</h2>
+          <p className="price">Price: ${product.price}</p>
           <div className="reviews">
             <AiFillStar />
             <AiFillStar />
@@ -48,38 +48,30 @@ export const ProductDetails = ({ product, products }) => {
             <AiFillStar />
             <AiOutlineStar />
           </div>
-        </div>
-        <div>
-          <p className="price">${product.price}</p>
-        </div>
-        <div className="quantity">
-          <h3>Quantity</h3>
-          <p className="quantity-desc">
-            <span className="minus" onClick={minusQty}>
-              <AiOutlineMinus />
-            </span>
-            <span className="num">{quantity}</span>
-            <span className="plus" onClick={plusQty}>
-              <AiOutlinePlus />
-            </span>
-          </p>
-        </div>
-        <div className="buttons">
-          <button
-            type="button"
-            className="add-to-cart"
-            onClick={() => onAdd(product, quantity)}
-          >
-            Add To Cart
-          </button>
+          <div className="checkout">
+            <div className="quantity">
+              <p className="quantity-desc">
+                <span className="minus" onClick={minusQty}>
+                  <AiOutlineMinus cursor="pointer" color="red" />
+                </span>
+                <span className="num">{quantity}</span>
+                <span className="plus" onClick={plusQty}>
+                  <AiOutlinePlus cursor="pointer" color="green" />
+                </span>
+              </p>
+            </div>
+            <Button className="button" onClick={() => onAdd(product, quantity)}>
+              Add To Cart
+            </Button>
+          </div>
         </div>
       </div>
-      <div className="maylike-products-wrapper ">
-        <h2>You May Also Like</h2>
+      <div className="maylike-products">
+        <h4>You May Also Like</h4>
         <div className="marquee">
           <div className="maylike-products-container track">
             {products.map((item) => (
-              <Product key={item._id} product={item} />
+              <ProductImage key={item._id} product={item} />
             ))}
           </div>
         </div>

@@ -4,7 +4,7 @@ module.exports = {
     components: ["styles/components"],
     utilities: ["styles/typography"],
   },
-  content: ["./app/**/*.{js,jsx,html}", "./app/style/**/*.scss"],
+  content: ["./app/**/*.{js,jsx}", "./app/style/**/*.scss"],
   theme: {
     extend: {
       // add any additional styles or properties here
