@@ -84,8 +84,7 @@ export const getStaticPaths = async () => {
   const query = `*[type == 'product'] {
         slug {
             current
-
-        }
+  }
     }`;
   const products = await client.fetch(query);
   const paths = products.map((product) => ({

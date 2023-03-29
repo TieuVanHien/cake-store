@@ -17,7 +17,6 @@ export const Nav = () => {
         <LocalMallIcon style={{ color: "black" }} />
         <span className="cart-item-qty"> {totalQty}</span>
       </Button>
-
       {showCart && <Cart />}
     </div>
   );
